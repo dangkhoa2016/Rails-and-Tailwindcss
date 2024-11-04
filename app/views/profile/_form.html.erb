@@ -1,0 +1,41 @@
+<%= turbo_frame_tag "profile_form" do %>
+  <%= form_for(current_user, url: profile_path, html: { method: :put },
+    class: 'mx-auto max-w-xs') do |f| %>
+    <%= render "devise/shared/error_messages", resource: current_user %>
+
+    <div class='mb-3'>
+      <%= f.email_field :email, autofocus: true, placeholder: "Email",
+        class: 'w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white' %>
+
+      <%= f.text_field :first_name, placeholder: "First Name",
+        class: "w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5" %>
+
+      <%= f.text_field :last_name, placeholder: "Last Name",
+        class: "w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5" %>
+
+      <%= f.text_field :phone_number, placeholder: "Phone Number",
+        class: "w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5" %>
+    </div>
+
+    <button type='submit' class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
+      <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
+      <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117M11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5M4 1.934V15h6V1.077z"/>
+    </svg>
+      <span class="ml-3">Update</span>
+    </button>
+  <% end %>
+<% end %>
+
+<div class="mt-6 text-xs text-gray-600 text-center">
+  <div class="mb-4">
+    Unhappy? <%= button_to "Cancel my account", profile_path,
+      data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" },
+      method: :delete, class: "text-red-600 hover:text-red-800" %>
+  </div>
+
+  <div class="flex justify-between">
+    <a href="<%= profile_password_path %>" class="text-blue-600 hover:underline">Change Password</a>
+    <%= link_to "Back", profile_path, class: "text-indigo-600 hover:text-indigo-800" %>
+  </div>
+</div>

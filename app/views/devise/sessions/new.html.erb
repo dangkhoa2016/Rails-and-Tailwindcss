@@ -1,0 +1,61 @@
+<div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
+  <div class="max-w-screen-xl m-0 bg-white md:bg-sky-100 sm:m-10 shadow sm:rounded-lg flex justify-center flex-1">
+    <div class="md:w-1/2 xl:w-5/12 bg-white p-4 md:p-6 sm:p-12">
+      <div>
+        <%= image_tag "logo.svg", class: "w-32 mx-auto" %>
+      </div>
+      <div class="mt-12 flex flex-col items-center">
+        <h1 class="text-2xl xl:text-3xl font-extrabold">
+          Sign In to Your Account
+        </h1>
+        <div class="w-full flex-1 mt-8">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: true }, class: 'mx-auto max-w-xs') do |f| %>
+            <%= render "layouts/flash" %>
+
+            <div class='mb-3'>
+              <%= f.email_field :email, autofocus: true, placeholder: "Email",
+                class: 'w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white' %>
+              <%= f.password_field :password, placeholder: "Password",
+                class: "w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5" %>
+            </div>
+
+            <% if devise_mapping.rememberable? %>
+            <div class="flex items-center">
+              <%= f.check_box :remember_me, class: "form-checkbox h-5 w-5 text-blue-600 border-gray-300 rounded focus:ring focus:ring-blue-500" %>
+              <%= f.label :remember_me, class: "ml-2 text-gray-700" %>
+            </div>
+            <% end %>
+
+            <button type='submit' class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
+              <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
+              <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117M11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5M4 1.934V15h6V1.077z"/>
+            </svg>
+              <span class="ml-3">Sign In</span>
+            </button>
+
+            <p class="mt-6 text-xs text-gray-600 text-center">
+              I agree to abide by [Rails 7 Tailwind]'s
+              <a href="javascript:void(0)" class="border-b border-gray-500 border-dotted">
+                Terms of Service
+              </a>
+              and its
+              <a href="javascript:void(0)" class="border-b border-gray-500 border-dotted">
+                Privacy Policy
+              </a>
+            </p>
+            <p class="mt-6 text-xs text-gray-600 text-center">
+              <%= render "devise/shared/links" %>
+            </p>
+          <% end %>
+          
+          <%#= render "devise/sessions/social_signin" %>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 text-center hidden md:flex">
+      <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat" style="background-image: url('<%= asset_path('login.svg') %>');">
+      </div>
+    </div>
+  </div>
+</div>

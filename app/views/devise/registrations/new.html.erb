@@ -1,0 +1,72 @@
+<div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
+  <div class="max-w-screen-xl m-0 sm:m-10 bg-white md:bg-amber-100 shadow sm:rounded-lg flex justify-center flex-1">
+    <div class="md:w-1/2 xl:w-5/12 bg-white p-4 md:p-6 sm:p-12">
+      <div>
+        <%= image_tag "logo.svg", class: "w-32 mx-auto" %>
+      </div>
+      <div class="mt-12 flex flex-col items-center">
+        <h1 class="text-2xl xl:text-3xl font-extrabold">
+          Register for an Account
+        </h1>
+        <div class="w-full flex-1 mt-8">
+          <%= form_for(resource, as: resource_name, url: users_sign_up_path, data: { turbo: true }, class: 'mx-auto max-w-xs') do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+
+            <%= f.email_field :email, autofocus: true, placeholder: "Email",
+              class: 'w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white' %>
+
+            <div class="my-5 flex flex-col min-[930px]:flex-row min-[930px]:space-x-5">
+              <div class="flex-1">
+                <%= f.text_field :first_name, placeholder: "First Name",
+                  class: "w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" %>
+              </div>
+
+              <div class="flex-1 mt-5 min-[930px]:mt-0">
+                <%= f.text_field :last_name, placeholder: "Last Name",
+                  class: "w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" %>
+              </div>
+            </div>
+
+            <div class="my-5">
+              <%= f.password_field :password, placeholder: "Password",
+                class: "w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" %>
+              <% if @minimum_password_length %>
+                <em class="text-xs text-gray-500">(minimum <%= @minimum_password_length %> characters)</em>
+              <% end %>
+            </div>
+  
+            <%= f.password_field :password_confirmation, placeholder: "Password Confirmation",
+              class: "w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" %>
+
+            <button type='submit' class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+              <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                <circle cx="8.5" cy="7" r="4"></circle>
+                <path d="M20 8v6M23 11h-6"></path>
+              </svg>
+              <span class="ml-3">Sign Up</span>
+            </button>
+
+            <p class="mt-6 text-xs text-gray-600 text-center">
+              I agree to abide by [Rails 7 Tailwind]'s
+              <a href="javascript:void(0)" class="border-b border-gray-500 border-dotted">
+                Terms of Service
+              </a>
+              and its
+              <a href="javascript:void(0)" class="border-b border-gray-500 border-dotted">
+                Privacy Policy
+              </a>
+            </p>
+            <p class="mt-6 text-xs text-gray-600 text-center">
+              <%= render "devise/shared/links" %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 text-center hidden md:flex">
+      <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat" style="background-image: url('<%= asset_path('register.svg') %>');">
+      </div>
+    </div>
+  </div>
+</div>

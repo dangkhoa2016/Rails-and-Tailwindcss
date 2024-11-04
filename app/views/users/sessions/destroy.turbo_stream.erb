@@ -1,0 +1,2 @@
+<% # if we use Turbo.visit, this will call get two times %>
+<%= turbo_stream.replace("redirect_frame", "<script>window.location='/';</script>") %>

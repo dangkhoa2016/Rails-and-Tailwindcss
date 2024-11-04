@@ -1,0 +1,37 @@
+<div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
+  <div class="max-w-screen-xl m-0 bg-white md:bg-indigo-100 sm:m-10 shadow sm:rounded-lg flex justify-center flex-1">
+    <div class="md:w-1/2 bg-white xl:w-5/12 p-4 md:p-6 sm:p-12">
+      <div>
+        <%= image_tag "logo.svg", class: "w-32 mx-auto" %>
+      </div>
+      <div class="mt-12 flex flex-col items-center">
+        <h1 class="text-2xl xl:text-3xl font-extrabold">
+        Forgot your password?
+        </h1>
+        <div class="w-full flex-1 mt-8">
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name),
+            html: { method: :post }, data: { turbo: true }, class: 'mx-auto max-w-xs') do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+
+            <div class='mb-3'>
+              <%= f.email_field :email, autofocus: true, placeholder: "Email",
+                class: 'w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white' %>
+            </div>
+
+            <button type='submit' class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+              <span>Send to me</span>
+            </button>
+
+            <p class="mt-6 text-xs text-gray-600 text-center">
+              <%= render "devise/shared/links" %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 text-center hidden md:flex">
+      <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat" style="background-image: url('<%= asset_path('forgot-password.svg') %>');">
+      </div>
+    </div>
+  </div>
+</div>
