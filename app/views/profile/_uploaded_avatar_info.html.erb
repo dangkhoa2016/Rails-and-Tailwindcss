@@ -1,0 +1,7 @@
+<% if blob = current_user.profile_avatar.blob %>
+  <div class='bg-gray-100 border border-gray-300 rounded-lg mb-2 p-4'>
+    <p>File name: <%= blob.filename %></p>
+    <p>File size: <%= number_to_human_size(blob.byte_size) %></p>
+    <p>File type: <%= blob.content_type %></p>
+  </div>
+<% end %>

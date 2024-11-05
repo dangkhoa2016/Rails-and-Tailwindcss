@@ -1,0 +1,75 @@
+<%= turbo_frame_tag "profile_form" do %>
+  <% is_uploaded_avatar = current_user.profile_avatar_attachment&.blob.present? %>
+
+  <%= render "profile/current_avatar" %>
+
+  <%= form_for(current_user, url: profile_avatar_path,
+    html: { method: :patch }, data: { turbo: true }, class: 'mx-auto max-w-xs') do |f| %>
+    <%= render "devise/shared/error_messages", resource: current_user %>
+    <%= hidden_field_tag :remove_avatar %>
+
+    <div class='my-3'>
+      <label for='user_avatar'
+        class="bg-white text-gray-500 font-semibold text-base rounded h-52 flex flex-col items-center justify-center cursor-pointer border-2 border-gray-300 border-dashed mx-auto font-[sans-serif]">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-11 mb-2 fill-gray-500" viewBox="0 0 32 32">
+          <path
+            d="M23.75 11.044a7.99 7.99 0 0 0-15.5-.009A8 8 0 0 0 9 27h3a1 1 0 0 0 0-2H9a6 6 0 0 1-.035-12 1.038 1.038 0 0 0 1.1-.854 5.991 5.991 0 0 1 11.862 0A1.08 1.08 0 0 0 23 13a6 6 0 0 1 0 12h-3a1 1 0 0 0 0 2h3a8 8 0 0 0 .75-15.956z"
+            data-original="#000000" />
+          <path
+            d="M20.293 19.707a1 1 0 0 0 1.414-1.414l-5-5a1 1 0 0 0-1.414 0l-5 5a1 1 0 0 0 1.414 1.414L15 16.414V29a1 1 0 0 0 2 0V16.414z"
+            data-original="#000000" />
+        </svg>
+        Upload file
+
+        <%= f.file_field :avatar, class: "hidden" %>
+        <p class="text-xs font-medium text-gray-400 mt-2">PNG, JPG and JPEG are Allowed.</p>
+        <p class="text-xs font-medium text-gray-400">Max size of 5MB</p>
+      </label>
+    </div>
+
+    <div class='mt-5 tracking-wide flex max-[360px]:flex-col flex-row justify-between w-full'>
+      <button type='submit' class="<%= is_uploaded_avatar ? nil : 'w-full ' %>font-semibold bg-indigo-500 p-4 text-gray-100 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+          <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5M.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5"/>
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+        </svg>
+        <span class="ml-3">Update</span>
+      </button>
+
+      <% if is_uploaded_avatar %>
+        <button type='button' onclick='removeAvatarHandle()'
+          class="max-[360px]:mt-2 mt-0 font-semibold bg-red-500 p-4 text-gray-100 rounded-lg hover:bg-red-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+          </svg>
+          <span class="ml-3">Remove</span>
+        </button>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class='mt-6 text-xs text-gray-600 text-center justify-between'>
+    <div class='flex justify-between'>
+      <%= link_to 'Change Password', profile_password_path, class: 'text-blue-600 hover:underline', data: { turbo_frame: '_top' } %>
+      <%= link_to 'Update Profile', profile_edit_path, class: 'text-blue-600 hover:underline', data: { turbo_frame: '_top' } %>
+    </div>
+
+    <%= link_to 'Back', profile_path, class: 'text-indigo-600 hover:text-indigo-800', data: { turbo_frame: '_top' } %>
+  </div>
+
+  <% if is_uploaded_avatar %>
+    <%= javascript_tag do %>
+      function removeAvatarHandle() {
+        if (confirm('Are you sure you want to remove your avatar?')) {
+          const hiddenField = document.querySelector('#remove_avatar');
+          if (hiddenField) {
+            hiddenField.value = '1';
+            hiddenField.closest('form').submit();
+          }
+        }
+      };
+    <% end %>
+  <% end %>
+
+<% end %>

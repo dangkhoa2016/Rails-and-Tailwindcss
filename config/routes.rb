@@ -11,8 +11,12 @@ Rails.application.routes.draw do
       get 'profile/password', to: 'devise/registrations#edit'
       patch 'profile/password', to: 'devise/registrations#update'
       put 'profile/password', to: 'devise/registrations#update'
-      get 'profile', to: 'profile#show'
       get 'profile/edit', to: 'profile#edit'
+      get 'profile/avatar', to: 'profile#edit_avatar'
+      patch 'profile/avatar', to: 'profile#update_avatar'
+
+      
+      get 'profile', to: 'profile#show'
       patch 'profile', to: 'profile#update'
       put 'profile', to: 'profile#update'
       delete 'profile', to: 'devise/registrations#destroy'
