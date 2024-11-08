@@ -1,34 +1,53 @@
-<div class="min-h-screen p-2 bg-gray-100 flex-col sm:flex-row flex items-center justify-center">
-  <div class="max-w-sm bg-white rounded-lg shadow-lg overflow-hidden">
-    <img class="w-full h-48 object-cover" src="https://placehold.co/600x400/EEE/31343C" alt="Image description">
-    <div class="p-6">
-      <h2 class="text-2xl font-bold text-gray-800">Card Title</h2>
-      <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque cursus.</p>
-      <div class="mt-4">
-        <button class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition">Read More</button>
-      </div>
-    </div>
-  </div>
 
-  <div class="max-w-sm bg-white rounded-lg shadow-lg overflow-hidden ml-0 sm:ml-4 mt-4 sm:mt-0">
-    <img class="w-full h-48 object-cover" src="https://placehold.co/600x400/EEE/31343C" alt="Image description">
-    <div class="p-6">
-      <h2 class="text-2xl font-bold text-gray-800">Card Title</h2>
-      <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque cursus.</p>
-      <div class="mt-4">
-        <%= link_to profile_path, class: "px-3 w-full bg-amber-500 text-white py-2 rounded hover:bg-amber-600 transition" do %>
-          View your profile
-        <% end %>
-      </div>
-    </div>
-    <div class="p-6">
-      <h2 class="text-2xl font-bold text-gray-800">Sign out</h2>
-      <p class="mt-2 text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque cursus.</p>
-      <div class="mt-4">
-      <%= button_to 'Logout', destroy_user_session_path, method: :delete,
-        data: { turbo_confirm: "Are you sure you want to log out?" },
-          class: "w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition" %>
-      </div>
-    </div>
-  </div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+  <div
+    class="border-2 border-dashed border-gray-300 rounded-lg dark:border-gray-600 h-32 md:h-64"
+  ></div>
+  <div
+    class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-32 md:h-64"
+  ></div>
+  <div
+    class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-32 md:h-64"
+  ></div>
+  <div
+    class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-32 md:h-64"
+  ></div>
+</div>
+
+<div
+  class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-96 mb-4"
+></div>
+
+<div class="grid grid-cols-2 gap-4 mb-4">
+  <div
+    class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
+  ></div>
+  <div
+    class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
+  ></div>
+  <div
+    class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
+  ></div>
+  <div
+    class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
+  ></div>
+</div>
+
+<div
+  class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-96 mb-4"
+></div>
+
+<div class="grid grid-cols-2 gap-4">
+  <div
+    class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
+  ></div>
+  <div
+    class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
+  ></div>
+  <div
+    class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
+  ></div>
+  <div
+    class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
+  ></div>
 </div>

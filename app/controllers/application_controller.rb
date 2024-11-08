@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
   layout :layout_by_resource
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -9,12 +10,15 @@ class ApplicationController < ActionController::Base
   end
 
   def layout_by_resource
-    if devise_controller?
-      #  && (controller_name == 'registrations' && action_name == 'edit')
+    if devise_controller? && !is_edit_password?
       'devise'
     else
       'application'
     end
+  end
+
+  def is_edit_password?
+    controller_name == 'registrations' && (action_name == 'edit' || action_name == 'update')
   end
 
   def configure_permitted_parameters

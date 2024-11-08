@@ -1,5 +1,0 @@
-<% if current_user.errors.any? %>
-  <%= turbo_stream.replace 'profile_form', partial: 'profile/avatar_form' %>
-<% else %>
-  <%= turbo_stream.replace 'redirect_frame', "<script>window.location='#{profile_avatar_path}';</script>" %>
-<% end %>

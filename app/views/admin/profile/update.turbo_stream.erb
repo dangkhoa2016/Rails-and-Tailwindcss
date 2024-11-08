@@ -1,5 +1,5 @@
 <% if current_user.errors.any? %>
-  <%= turbo_stream.replace 'profile_form', partial: 'profile/form', locals: { profile: current_user } %>
+  <%= turbo_stream.replace 'profile_form', partial: 'admin/profile/form' %>
 <% else %>
   <% # if we use Turbo.visit, this won't allow going to edit profile again, need to fix %>
   <%= turbo_stream.replace("redirect_frame", "<script>window.location='#{profile_path}';</script>") %>

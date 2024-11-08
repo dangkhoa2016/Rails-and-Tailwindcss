@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def flash_class(type)
     base_class = ['mb-4 px-4 py-3 rounded-lg border']
     color = case type

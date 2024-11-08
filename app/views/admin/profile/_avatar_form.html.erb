@@ -1,16 +1,16 @@
 <%= turbo_frame_tag "profile_form" do %>
   <% is_uploaded_avatar = current_user.profile_avatar_attachment&.blob.present? %>
 
-  <%= render "profile/current_avatar" %>
+  <%= render "admin/profile/current_avatar" %>
 
-  <%= form_for(current_user, url: profile_avatar_path,
+  <%= form_for(current_user, url: avatar_admin_profile_index_path,
     html: { method: :patch }, data: { turbo: true }, class: 'mx-auto max-w-xs') do |f| %>
     <%= render "devise/shared/error_messages", resource: current_user %>
     <%= hidden_field_tag :remove_avatar %>
 
     <div class='my-3'>
       <label for='user_avatar'
-        class="bg-white text-gray-500 font-semibold text-base rounded h-52 flex flex-col items-center justify-center cursor-pointer border-2 border-gray-300 border-dashed mx-auto font-[sans-serif]">
+        class="bg-white dark:bg-gray-300 text-gray-500 font-semibold text-base rounded h-52 flex flex-col items-center justify-center cursor-pointer border-2 border-gray-300 dark:border-gray-600 border-dashed mx-auto font-[sans-serif]">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-11 mb-2 fill-gray-500" viewBox="0 0 32 32">
           <path
             d="M23.75 11.044a7.99 7.99 0 0 0-15.5-.009A8 8 0 0 0 9 27h3a1 1 0 0 0 0-2H9a6 6 0 0 1-.035-12 1.038 1.038 0 0 0 1.1-.854 5.991 5.991 0 0 1 11.862 0A1.08 1.08 0 0 0 23 13a6 6 0 0 1 0 12h-3a1 1 0 0 0 0 2h3a8 8 0 0 0 .75-15.956z"
@@ -51,11 +51,11 @@
 
   <div class='mt-6 text-xs text-gray-600 text-center justify-between'>
     <div class='flex justify-between'>
-      <%= link_to 'Change Password', profile_password_path, class: 'text-blue-600 hover:underline', data: { turbo_frame: '_top' } %>
-      <%= link_to 'Update Profile', profile_edit_path, class: 'text-blue-600 hover:underline', data: { turbo_frame: '_top' } %>
+      <%= link_to 'Change Password', profile_password_path, class: 'text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500 dark:hover:text-blue-500 hover:underline', data: { turbo_frame: '_top' } %>
+      <%= link_to 'Update Profile', edit_admin_profile_index_path, class: 'text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500 dark:hover:text-blue-500 hover:underline', data: { turbo_frame: '_top' } %>
     </div>
 
-    <%= link_to 'Back', profile_path, class: 'text-indigo-600 hover:text-indigo-800', data: { turbo_frame: '_top' } %>
+    <%= link_to 'Back', profile_path, class: 'dark:text-white dark:hover:text-blue-500 dark:hover:text-blue-500 hover:underline text-indigo-600 hover:text-indigo-800', data: { turbo_frame: '_top' } %>
   </div>
 
   <% if is_uploaded_avatar %>

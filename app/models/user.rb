@@ -53,4 +53,16 @@ class User < ApplicationRecord
   rescue ActiveStorage::FileNotFoundError
     errors.add(:avatar, 'could not be found')
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["active",  "birth_date", "created_at", "current_sign_in_at", "current_sign_in_ip",
+    "email", "encrypted_password", "failed_attempts", "first_name", "id",
+    "id_value", "last_name", "last_sign_in_at", "last_sign_in_ip",
+    "locked_at", "phone_number", "remember_created_at", "reset_password_sent_at",
+    "reset_password_token", "role", "sign_in_count", "unlock_token", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["profile_avatar_attachment", "profile_avatar_blob", "full_name"]
+  end
 end

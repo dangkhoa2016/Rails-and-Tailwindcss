@@ -3,11 +3,11 @@
     <%= image_tag current_user.profile_avatar, class: 'rounded-lg' %>
   <% elsif current_user.profile_avatar_attachment&.blob %>
     <p class='mb-2'>Avatar is invalid. Your old avatar is still being used.</p>
-    <%= render 'profile/uploaded_avatar_info' %>
+    <%= render 'admin/profile/uploaded_avatar_info' %>
     <%= image_tag current_user.profile_avatar_attachment, class: 'rounded-lg' %>
   <% else %>
     <p class='mb-2'>Avatar is invalid.</p>
-    <%= render 'profile/uploaded_avatar_info' %>
+    <%= render 'admin/profile/uploaded_avatar_info' %>
   <% end %>
 <% else %>
   <p class='mb-2'>No avatar uploaded.</p>

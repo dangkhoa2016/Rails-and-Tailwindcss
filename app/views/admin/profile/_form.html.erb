@@ -1,22 +1,21 @@
 <%= turbo_frame_tag "profile_form" do %>
-  <%= form_for(current_user, url: profile_path, html: { method: :put },
-    class: 'mx-auto max-w-xs') do |f| %>
+  <%= form_for(current_user, url: profile_path, html: { method: :patch }) do |f| %>
     <%= render "devise/shared/error_messages", resource: current_user %>
 
     <div class='mb-3'>
-      <%= f.label :email, class: 'block text-gray-700 text-sm mb-2' %>
+      <%= f.label :email, class: 'block dark:text-gray-200 text-gray-700 text-sm mb-2' %>
       <%= f.email_field :email, autofocus: true, placeholder: "Email",
         class: 'w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white' %>
       
       <div class="mt-5 flex flex-col max-[430px]:space-x-0 max-[430px]:flex-col max-md:flex-row max-md:space-x-5 min-[930px]:flex-row min-[930px]:space-x-5">
         <div class="flex-1">
-          <%= f.label :first_name, class: 'block text-gray-700 text-sm mb-2' %>
+          <%= f.label :first_name, class: 'block dark:text-gray-200 text-gray-700 text-sm mb-2' %>
           <%= f.text_field :first_name, placeholder: "First Name",
             class: "w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" %>
         </div>
 
         <div class="flex-1 mt-5 max-[430px]:mt-5 max-md:mt-0 min-[930px]:mt-0">
-          <%= f.label :last_name, class: 'block text-gray-700 text-sm mb-2' %>
+          <%= f.label :last_name, class: 'block dark:text-gray-200 text-gray-700 text-sm mb-2' %>
           <%= f.text_field :last_name, placeholder: "Last Name",
             class: "w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" %>
         </div>
@@ -24,12 +23,12 @@
 
       <div class="mt-5 flex flex-col max-[430px]:space-x-0 max-[430px]:flex-col max-md:flex-row max-md:space-x-5 min-[930px]:flex-row min-[930px]:space-x-5">
         <div class="flex-1">
-          <%= f.label :phone_number, class: 'block text-gray-700 text-sm mb-2' %>
+          <%= f.label :phone_number, class: 'block dark:text-gray-200 text-gray-700 text-sm mb-2' %>
           <%= f.text_field :phone_number, placeholder: "Phone Number",
             class: "w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" %>
         </div>
         <div class="flex-1 mt-5 max-[430px]:mt-5 max-md:mt-0 min-[930px]:mt-0">
-          <%= f.label :birth_date, class: 'block text-gray-700 text-sm mb-2' %>
+          <%= f.label :birth_date, class: 'block dark:text-gray-200 text-gray-700 text-sm mb-2' %>
           <%= f.date_field :birth_date, placeholder: "Birth Date",
             class: "w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" %>
         </div>
@@ -45,18 +44,3 @@
     </button>
   <% end %>
 <% end %>
-
-<div class="mt-6 text-xs text-gray-600 text-center">
-  <div class="mb-4">
-    Unhappy? <%= button_to "Cancel my account", profile_path,
-      data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" },
-      method: :delete, class: "text-red-600 hover:text-red-800" %>
-  </div>
-
-  <div class='flex justify-between'>
-    <%= link_to 'Change Password', profile_password_path, class: 'text-blue-600 hover:underline' %>
-    <%= link_to 'Update Avatar', profile_avatar_path, class: 'text-indigo-600 hover:text-indigo-800' %>
-  </div>
-
-  <%= link_to 'Back', profile_path, class: 'text-indigo-600 hover:text-indigo-800' %>
-</div>

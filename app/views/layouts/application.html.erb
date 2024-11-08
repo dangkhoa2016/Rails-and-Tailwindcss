@@ -7,9 +7,16 @@
 
   <body>
     <turbo-frame id="redirect_frame"></turbo-frame>
-    <main class="">
-      <%= render "layouts/flash" %>
-      <%= yield %>
-    </main>
+    <div class="min-h-screen antialiased bg-gray-100 dark:bg-gray-900">
+      <%#= render 'layouts/navigation' %>
+      <%= render 'layouts/nav' %>
+
+      <%#= render 'layouts/sidebar' %>
+
+      <main class="mt-[73px] md:mt-[65px] px-4 py-5 h-auto">
+        <%= render "layouts/flash" %>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

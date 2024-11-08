@@ -1,6 +1,6 @@
 <div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
   <div class="max-w-screen-xl m-0 sm:m-10 bg-white md:bg-amber-100 shadow sm:rounded-lg flex justify-center flex-1">
-    <div class="rounded-e-lg rounded-s-lg md:rounded-e-none md:w-1/2 xl:w-5/12 bg-white p-4 md:p-6 sm:p-12">
+  <div class="rounded-e-lg rounded-s-lg md:rounded-e-none w-full bg-transparent md:w-1/2 xl:w-5/12 sm:bg-white p-4 min-[550px]:p-6 md:p-6 sm:p-12">
       <div>
         <%= image_tag "logo.svg", class: "w-32 mx-auto" %>
       </div>
@@ -15,13 +15,13 @@
             <%= f.email_field :email, autofocus: true, placeholder: "Email",
               class: 'w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white' %>
 
-            <div class="my-5 flex flex-col min-[930px]:flex-row min-[930px]:space-x-5">
+            <div class="my-5 flex flex-col max-[480px]:space-x-0 max-[480px]:flex-col max-md:flex-row max-md:space-x-5 min-[930px]:flex-row min-[930px]:space-x-5">
               <div class="flex-1">
                 <%= f.text_field :first_name, placeholder: "First Name",
                   class: "w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" %>
               </div>
 
-              <div class="flex-1 mt-5 min-[930px]:mt-0">
+              <div class="flex-1 mt-5 max-[480px]:mt-5 max-md:mt-0 min-[930px]:mt-0">
                 <%= f.text_field :last_name, placeholder: "Last Name",
                   class: "w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" %>
               </div>
